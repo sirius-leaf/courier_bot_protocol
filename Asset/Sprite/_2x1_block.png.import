@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8qwy3vej3x04"
-path="res://.godot/imported/_SD-570.png-35b4e91432d287b22c3b74ebd4ae7c47.ctex"
+uid="uid://b2eb23gdsebyh"
+path="res://.godot/imported/_2x1_block.png-ae2ea1b521f30928f5dd29dcc32cdbb7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Sprite/_SD-570.png"
-dest_files=["res://.godot/imported/_SD-570.png-35b4e91432d287b22c3b74ebd4ae7c47.ctex"]
+source_file="res://Asset/Sprite/_2x1_block.png"
+dest_files=["res://.godot/imported/_2x1_block.png-ae2ea1b521f30928f5dd29dcc32cdbb7.ctex"]
 
 [params]
 

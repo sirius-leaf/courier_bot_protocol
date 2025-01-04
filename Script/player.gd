@@ -6,10 +6,10 @@ class_name Player
 
 var _playerPos := Vector2(0.0, 0.0)
 
-@onready var check_up: RayCast2D = $CheckUp
-@onready var check_down: RayCast2D = $CheckDown
-@onready var check_left: RayCast2D = $CheckLeft
-@onready var check_right: RayCast2D = $CheckRight
+@onready var check_up: RayCast2D = $MovementCheckRaycast/CheckUp
+@onready var check_down: RayCast2D = $MovementCheckRaycast/CheckDown
+@onready var check_left: RayCast2D = $MovementCheckRaycast/CheckLeft
+@onready var check_right: RayCast2D = $MovementCheckRaycast/CheckRight
 
 func _process(delta: float) -> void:
 	var is_moving: bool = true if global_position.distance_to(_playerPos) > 5.0 else false

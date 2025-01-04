@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bupdyrkly776e"]
+
+[ext_resource type="Script" path="res://Script/car_spawner.gd" id="1_peg74"]
+[ext_resource type="PackedScene" uid="uid://d0428y66p1kwg" path="res://Scene/Object Scene/small_car.tscn" id="2_2q4pu"]
+
+[node name="CarSpawner" type="Node2D"]
+position = Vector2(0, -48)
+script = ExtResource("1_peg74")
+carScene = ExtResource("2_2q4pu")
+
+[node name="SpawnDelay" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="SpawnDelay" to="." method="_on_spawn_delay_timeout"]

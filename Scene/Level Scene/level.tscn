@@ -1,25 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://dx8nbddj2vps5"]
+[gd_scene load_steps=4 format=3 uid="uid://dx8nbddj2vps5"]
 
 [ext_resource type="Script" path="res://Script/camera_2d.gd" id="1_34jud"]
 [ext_resource type="PackedScene" uid="uid://cnx505m3w2o5k" path="res://Scene/Object Scene/sd_570.tscn" id="1_uo02c"]
-[ext_resource type="Texture2D" uid="uid://8qwy3vej3x04" path="res://Asset/Sprite/_SD-570.png" id="2_r6qid"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jc6ny"]
-size = Vector2(16, 16)
+[ext_resource type="PackedScene" uid="uid://bupdyrkly776e" path="res://Scene/Object Scene/Spawner/car_spawner.tscn" id="4_vcn4b"]
 
 [node name="Level" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
+position_smoothing_speed = 2.0
 script = ExtResource("1_34jud")
 
 [node name="SD-570" parent="." instance=ExtResource("1_uo02c")]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(0, -48)
+[node name="CarSpawner" parent="." instance=ExtResource("4_vcn4b")]
+moveSpeed = [30.0, 50.0]
 
-[node name="Sd-571" type="Sprite2D" parent="StaticBody2D"]
-texture = ExtResource("2_r6qid")
+[node name="CarSpawner2" parent="." instance=ExtResource("4_vcn4b")]
+position = Vector2(0, -64)
+moveSpeed = [30.0, 50.0]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("RectangleShape2D_jc6ny")
+[node name="CarSpawner3" parent="." instance=ExtResource("4_vcn4b")]
+position = Vector2(0, -80)
+moveSpeed = [30.0, 50.0]
+
+[node name="CarSpawner4" parent="." instance=ExtResource("4_vcn4b")]
+position = Vector2(0, -96)
+moveSpeed = [30.0, 50.0]
+
+[node name="CarSpawner5" parent="." instance=ExtResource("4_vcn4b")]
+position = Vector2(0, -112)
+moveSpeed = [30.0, 50.0]
