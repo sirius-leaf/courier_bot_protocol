@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bupdyrkly776e"]
+
+[ext_resource type="Script" path="res://Script/car_spawner.gd" id="1_xxbai"]
+[ext_resource type="PackedScene" uid="uid://d0428y66p1kwg" path="res://Scene/Object Scene/small_car.tscn" id="2_3qc83"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktfgw"]
+size = Vector2(416, 4)
+
+[node name="MovingObjectSpawner" type="Node2D"]
+script = ExtResource("1_xxbai")
+carScene = ExtResource("2_3qc83")
+
+[node name="SpawnDelay" type="Timer" parent="."]
+one_shot = true
+
+[node name="Water" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Water"]
+shape = SubResource("RectangleShape2D_ktfgw")
+
+[connection signal="timeout" from="SpawnDelay" to="." method="_on_spawn_delay_timeout"]

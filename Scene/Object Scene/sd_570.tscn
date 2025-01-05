@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnx505m3w2o5k"]
+[gd_scene load_steps=6 format=3 uid="uid://cnx505m3w2o5k"]
 
 [ext_resource type="Script" path="res://Script/player.gd" id="1_sjwqe"]
 [ext_resource type="Texture2D" uid="uid://8qwy3vej3x04" path="res://Asset/Sprite/_1x1_block.png" id="1_toexh"]
@@ -6,7 +6,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4hpe0"]
 size = Vector2(12, 14)
 
-[node name="SD-570" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pfq80"]
+size = Vector2(2, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4maq"]
+size = Vector2(2, 7)
+
+[node name="SD-570" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_sjwqe")
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -28,3 +34,20 @@ target_position = Vector2(-16, 0)
 
 [node name="CheckRight" type="RayCast2D" parent="MovementCheckRaycast"]
 target_position = Vector2(16, 0)
+
+[node name="PlatformCheck" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformCheck"]
+shape = SubResource("RectangleShape2D_pfq80")
+
+[node name="WaterCheck" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterCheck"]
+shape = SubResource("RectangleShape2D_g4maq")
+
+[connection signal="area_entered" from="PlatformCheck" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="PlatformCheck" to="." method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="WaterCheck" to="." method="_on_water_check_area_entered"]
+[connection signal="area_exited" from="WaterCheck" to="." method="_on_water_check_area_exited"]

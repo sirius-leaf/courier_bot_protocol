@@ -1,17 +1,19 @@
 extends Node2D
 
 @export var carScene: PackedScene
-@export var spawnTime := [2.0, 2.5]
+@export var spawnTime := [2.0, 6.0]
 @export var moveSpeed := [30.0, 50.0]
-@export_range(-1, 1, 1) var overrideMoveDirection: int = 0
-
+@export_range(-1, 1, 1) var overrideMoveDirection := 0
+@export var isWater := false
 
 var _carMoveSpeed: float
 var _moveDirection: int
 
 @onready var spawn_delay: Timer = $SpawnDelay
+@onready var water: Area2D = $Water
 
 func _ready() -> void:
+	if isWater: water.monitorable = true
 	_set_delay()
 	
 	_carMoveSpeed = randf_range(moveSpeed[0], moveSpeed[1])
@@ -20,8 +22,8 @@ func _ready() -> void:
 	var spawnPos := 0.0
 	
 	while (_moveDirection > 0 and spawnPos < 460) or (_moveDirection < 0 and spawnPos > -460):
-		var car: Car = carScene.instantiate()
-		car.MoveSpeed = _carMoveSpeed * _moveDirection
+		var car: MovingObject = carScene.instantiate()
+		car.moveSpeed = _carMoveSpeed * _moveDirection
 		car.global_position = Vector2(-230.0 * _moveDirection + spawnPos, global_position.y)
 		car.global_rotation_degrees = 180.0 if _moveDirection < 0 else 0.0
 		$"..".add_child.call_deferred(car)
@@ -30,8 +32,8 @@ func _ready() -> void:
 
 
 func _on_spawn_delay_timeout() -> void:
-	var car: Car = carScene.instantiate()
-	car.MoveSpeed = _carMoveSpeed * _moveDirection
+	var car: MovingObject = carScene.instantiate()
+	car.moveSpeed = _carMoveSpeed * _moveDirection
 	car.global_position = Vector2(-230.0 * _moveDirection, global_position.y)
 	car.global_rotation_degrees = 180.0 if _moveDirection < 0 else 0.0
 	$"..".add_child(car)
