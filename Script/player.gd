@@ -17,6 +17,9 @@ var _onWater := false
 @onready var check_left: RayCast2D = $MovementCheckRaycast/CheckLeft
 @onready var check_right: RayCast2D = $MovementCheckRaycast/CheckRight
 
+func _ready() -> void:
+	print(OS.has_feature("web_android") or OS.has_feature("web_ios"))
+
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_up") and not check_up.is_colliding():
 		_playerPos.y -= moveDistance
