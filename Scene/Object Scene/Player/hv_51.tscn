@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://vq7gk0htc781"]
+
+[ext_resource type="Script" path="res://Script/player.gd" id="1_y5aa2"]
+[ext_resource type="Texture2D" uid="uid://p4jt8bkotiik" path="res://Asset/Sprite/_player.png" id="2_aydju"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4hpe0"]
+size = Vector2(12, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lfeqe"]
+size = Vector2(6, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pfq80"]
+size = Vector2(2, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4maq"]
+size = Vector2(2, 7)
+
+[node name="HV-51" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_y5aa2")
+moveSpeed = 0.05
+
+[node name="Sprite" type="Sprite2D" parent="."]
+rotation = 4.71239
+texture = ExtResource("2_aydju")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4hpe0")
+
+[node name="MovementCheckRaycast" type="Node2D" parent="."]
+
+[node name="CheckLeft" type="RayCast2D" parent="MovementCheckRaycast"]
+target_position = Vector2(-16, 0)
+
+[node name="CheckRight" type="RayCast2D" parent="MovementCheckRaycast"]
+target_position = Vector2(16, 0)
+
+[node name="CheckUp" type="Area2D" parent="MovementCheckRaycast"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovementCheckRaycast/CheckUp"]
+position = Vector2(0, -13)
+shape = SubResource("RectangleShape2D_lfeqe")
+
+[node name="CheckDown" type="Area2D" parent="MovementCheckRaycast"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovementCheckRaycast/CheckDown"]
+position = Vector2(0, 13)
+shape = SubResource("RectangleShape2D_lfeqe")
+
+[node name="PlatformCheck" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformCheck"]
+shape = SubResource("RectangleShape2D_pfq80")
+
+[node name="WaterCheck" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterCheck"]
+shape = SubResource("RectangleShape2D_g4maq")
+
+[connection signal="area_entered" from="PlatformCheck" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="PlatformCheck" to="." method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="WaterCheck" to="." method="_on_water_check_area_entered"]
+[connection signal="area_exited" from="WaterCheck" to="." method="_on_water_check_area_exited"]

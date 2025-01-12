@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://ufneu3supamj"]
+
+[ext_resource type="Script" path="res://Script/player.gd" id="1_mx62x"]
+[ext_resource type="Texture2D" uid="uid://b2eb23gdsebyh" path="res://Asset/Sprite/_2x1_block.png" id="2_8xewg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4hpe0"]
+size = Vector2(28, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kvv5c"]
+size = Vector2(22, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pfq80"]
+size = Vector2(18, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4maq"]
+size = Vector2(18, 7)
+
+[node name="WS-10" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_mx62x")
+moveSpeed = 0.05
+smallPlayer = false
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(8, 0)
+texture = ExtResource("2_8xewg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_4hpe0")
+
+[node name="MovementCheckRaycast" type="Node2D" parent="."]
+
+[node name="CheckLeft" type="RayCast2D" parent="MovementCheckRaycast"]
+target_position = Vector2(-16, 0)
+
+[node name="CheckRight" type="RayCast2D" parent="MovementCheckRaycast"]
+target_position = Vector2(32, 0)
+
+[node name="CheckUp" type="Area2D" parent="MovementCheckRaycast"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovementCheckRaycast/CheckUp"]
+position = Vector2(8, -13)
+shape = SubResource("RectangleShape2D_kvv5c")
+
+[node name="CheckDown" type="Area2D" parent="MovementCheckRaycast"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovementCheckRaycast/CheckDown"]
+position = Vector2(8, 13)
+shape = SubResource("RectangleShape2D_kvv5c")
+
+[node name="PlatformCheck" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformCheck"]
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_pfq80")
+
+[node name="WaterCheck" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterCheck"]
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_g4maq")
+
+[connection signal="area_entered" from="PlatformCheck" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="PlatformCheck" to="." method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="WaterCheck" to="." method="_on_water_check_area_entered"]
+[connection signal="area_exited" from="WaterCheck" to="." method="_on_water_check_area_exited"]

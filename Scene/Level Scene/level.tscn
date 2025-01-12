@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dx8nbddj2vps5"]
 
 [ext_resource type="Script" path="res://Script/camera_2d.gd" id="1_34jud"]
-[ext_resource type="PackedScene" uid="uid://cnx505m3w2o5k" path="res://Scene/Object Scene/sd_570.tscn" id="1_uo02c"]
+[ext_resource type="PackedScene" uid="uid://b28d3ptygwex5" path="res://Scene/Object Scene/Player/wd_38.tscn" id="2_viq0u"]
 [ext_resource type="PackedScene" uid="uid://bupdyrkly776e" path="res://Scene/Object Scene/Spawner/moving_object_spawner.tscn" id="3_t40wj"]
 [ext_resource type="PackedScene" uid="uid://ksrfwjtlo3p3" path="res://Scene/Object Scene/moving_platform.tscn" id="4_c00vo"]
 [ext_resource type="Script" path="res://Script/game_ui.gd" id="5_tnsey"]
@@ -14,7 +14,9 @@ position_smoothing_enabled = true
 position_smoothing_speed = 2.0
 script = ExtResource("1_34jud")
 
-[node name="SD-570" parent="." instance=ExtResource("1_uo02c")]
+[node name="Players" type="Node2D" parent="."]
+
+[node name="Player1" parent="Players" instance=ExtResource("2_viq0u")]
 
 [node name="MovingObjectSpawner" parent="." instance=ExtResource("3_t40wj")]
 position = Vector2(0, -32)
