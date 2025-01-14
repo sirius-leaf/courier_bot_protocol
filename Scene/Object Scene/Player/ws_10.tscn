@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://ufneu3supamj"]
 
 [ext_resource type="Script" path="res://Script/player.gd" id="1_mx62x"]
-[ext_resource type="Texture2D" uid="uid://b2eb23gdsebyh" path="res://Asset/Sprite/_2x1_block.png" id="2_8xewg"]
+[ext_resource type="Texture2D" uid="uid://3y8nb17xe5ou" path="res://Asset/Sprite/courierbot.png" id="2_kxq2t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4hpe0"]
-size = Vector2(28, 14)
+size = Vector2(26, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvv5c"]
 size = Vector2(22, 6)
@@ -22,7 +22,15 @@ smallPlayer = false
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(8, 0)
-texture = ExtResource("2_8xewg")
+texture = ExtResource("2_kxq2t")
+region_enabled = true
+region_rect = Rect2(16, 0, 32, 16)
+
+[node name="Box" type="Sprite2D" parent="Sprite"]
+modulate = Color(1, 0.266667, 0.219608, 1)
+texture = ExtResource("2_kxq2t")
+region_enabled = true
+region_rect = Rect2(19, 16, 26, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 0)

@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://cnx505m3w2o5k"]
 
 [ext_resource type="Script" path="res://Script/player.gd" id="1_sjwqe"]
-[ext_resource type="Texture2D" uid="uid://p4jt8bkotiik" path="res://Asset/Sprite/_player.png" id="2_regn3"]
+[ext_resource type="Texture2D" uid="uid://3y8nb17xe5ou" path="res://Asset/Sprite/courierbot.png" id="2_javvu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4hpe0"]
-size = Vector2(12, 14)
+size = Vector2(10, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvv5c"]
 size = Vector2(6, 6)
@@ -19,8 +19,16 @@ size = Vector2(2, 7)
 script = ExtResource("1_sjwqe")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-rotation = 4.71239
-texture = ExtResource("2_regn3")
+rotation = -1.5708
+texture = ExtResource("2_javvu")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Box" type="Sprite2D" parent="Sprite"]
+modulate = Color(1, 0.682617, 0.21875, 1)
+texture = ExtResource("2_javvu")
+region_enabled = true
+region_rect = Rect2(3, 16, 10, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4hpe0")

@@ -1,15 +1,26 @@
-[gd_scene load_steps=9 format=3 uid="uid://dx8nbddj2vps5"]
+[gd_scene load_steps=11 format=3 uid="uid://dx8nbddj2vps5"]
 
 [ext_resource type="Script" path="res://Script/camera_2d.gd" id="1_34jud"]
 [ext_resource type="PackedScene" uid="uid://cnx505m3w2o5k" path="res://Scene/Object Scene/Player/sd_570.tscn" id="2_it3qa"]
 [ext_resource type="PackedScene" uid="uid://bupdyrkly776e" path="res://Scene/Object Scene/Spawner/moving_object_spawner.tscn" id="3_t40wj"]
 [ext_resource type="PackedScene" uid="uid://ksrfwjtlo3p3" path="res://Scene/Object Scene/moving_platform.tscn" id="4_c00vo"]
-[ext_resource type="Script" path="res://Script/finish.gd" id="5_1bp37"]
+[ext_resource type="PackedScene" uid="uid://dnnqr6y0ij1vg" path="res://Scene/Object Scene/finish.tscn" id="5_58kcb"]
 [ext_resource type="Script" path="res://Script/game_ui.gd" id="5_tnsey"]
 [ext_resource type="Texture2D" uid="uid://d2h31lffuo3hm" path="res://Asset/Sprite/move_button.png" id="5_yyhpe"]
+[ext_resource type="Texture2D" uid="uid://yw8ffq10eyle" path="res://Asset/Sprite/ground.png" id="6_05t2f"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rlvtc"]
-size = Vector2(32, 2)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tmcto"]
+texture = ExtResource("6_05t2f")
+texture_region_size = Vector2i(400, 16)
+0:0/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+0:3/0 = 0
+0:4/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_pggep"]
+tile_size = Vector2i(400, 16)
+sources/0 = SubResource("TileSetAtlasSource_tmcto")
 
 [node name="Level" type="Node2D"]
 
@@ -52,6 +63,8 @@ texture_normal = ExtResource("5_yyhpe")
 action = "ui_up"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_top = -200
+limit_bottom = 113
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
 script = ExtResource("1_34jud")
@@ -72,43 +85,14 @@ process_mode = 4
 [node name="Player5" parent="Players" instance=ExtResource("2_it3qa")]
 process_mode = 4
 
-[node name="Finish" type="Node2D" parent="."]
-position = Vector2(0, -112)
-script = ExtResource("5_1bp37")
+[node name="Finish" parent="." instance=ExtResource("5_58kcb")]
+position = Vector2(0, -144)
 
-[node name="Finish1" type="Area2D" parent="Finish"]
-position = Vector2(-160, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Finish/Finish1"]
-position = Vector2(0, -7)
-shape = SubResource("RectangleShape2D_rlvtc")
-
-[node name="Finish2" type="Area2D" parent="Finish"]
-position = Vector2(-80, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Finish/Finish2"]
-position = Vector2(0, -7)
-shape = SubResource("RectangleShape2D_rlvtc")
-
-[node name="Finish3" type="Area2D" parent="Finish"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Finish/Finish3"]
-position = Vector2(0, -7)
-shape = SubResource("RectangleShape2D_rlvtc")
-
-[node name="Finish4" type="Area2D" parent="Finish"]
-position = Vector2(80, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Finish/Finish4"]
-position = Vector2(0, -7)
-shape = SubResource("RectangleShape2D_rlvtc")
-
-[node name="Finish5" type="Area2D" parent="Finish"]
-position = Vector2(160, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Finish/Finish5"]
-position = Vector2(0, -7)
-shape = SubResource("RectangleShape2D_rlvtc")
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+z_index = -2
+position = Vector2(-200, 8)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 253, 255, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 252, 255, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 250, 255, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 251, 255, 0, 0, 0, 0, 2, 0, 0, 0)
+tile_set = SubResource("TileSet_pggep")
 
 [node name="MovingObjectSpawner" parent="." instance=ExtResource("3_t40wj")]
 position = Vector2(0, -32)
@@ -120,8 +104,5 @@ isWater = true
 [node name="MovingObjectSpawner2" parent="." instance=ExtResource("3_t40wj")]
 position = Vector2(0, -64)
 
-[connection signal="body_entered" from="Finish/Finish1" to="Finish" method="_on_finish_1_body_entered"]
-[connection signal="body_entered" from="Finish/Finish2" to="Finish" method="_on_finish_2_body_entered"]
-[connection signal="body_entered" from="Finish/Finish3" to="Finish" method="_on_finish_3_body_entered"]
-[connection signal="body_entered" from="Finish/Finish4" to="Finish" method="_on_finish_4_body_entered"]
-[connection signal="body_entered" from="Finish/Finish5" to="Finish" method="_on_finish_5_body_entered"]
+[node name="Node2D" type="Marker2D" parent="."]
+position = Vector2(0, 112)

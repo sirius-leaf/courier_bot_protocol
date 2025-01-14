@@ -1,19 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://ksrfwjtlo3p3"]
+[gd_scene load_steps=6 format=3 uid="uid://ksrfwjtlo3p3"]
 
 [ext_resource type="Script" path="res://Script/moving_object.gd" id="1_08bv1"]
-[ext_resource type="Texture2D" uid="uid://0u62yy35jmrr" path="res://Asset/Sprite/_3x1_block.png" id="2_ujkyl"]
+[ext_resource type="Texture2D" uid="uid://dywus4ofv2fl2" path="res://Asset/Sprite/wood_plank.png" id="2_f8638"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cn5xw"]
 size = Vector2(48, 8)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_imo3g"]
+texture = ExtResource("2_f8638")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_x1hju"]
+sources/1 = SubResource("TileSetAtlasSource_imo3g")
+
 [node name="MovingPlatform" type="Area2D" groups=["Platform"]]
+z_index = -1
 script = ExtResource("1_08bv1")
 isPlatform = true
-
-[node name="3x1Block" type="Sprite2D" parent="."]
-position = Vector2(-16, 0)
-texture = ExtResource("2_ujkyl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-16, 0)
 shape = SubResource("RectangleShape2D_cn5xw")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(8, 8)
+tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 1, 0, 2, 0, 0, 0, 0, 0, 253, 255, 255, 255, 1, 0, 0, 0, 0, 0, 0, 0, 254, 255, 255, 255, 1, 0, 1, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_x1hju")

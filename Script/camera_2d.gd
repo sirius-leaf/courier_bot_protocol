@@ -17,15 +17,25 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	match _currentPlayer:
 		0:
-			global_position.y = player_1.global_position.y if player_1.global_position.y <= 0.0 else 0.0
+			global_position.y = player_1.global_position.y
 		1:
-			global_position.y = player_2.global_position.y if player_2.global_position.y <= 0.0 else 0.0
+			global_position.y = player_2.global_position.y
+			
+			if finish.global_position.y - player_1.global_position.y < 32.0: player_1.global_position.y -= 48.0 * delta
 		2:
-			global_position.y = player_3.global_position.y if player_3.global_position.y <= 0.0 else 0.0
+			global_position.y = player_3.global_position.y
+			
+			if finish.global_position.y - player_2.global_position.y < 32.0: player_2.global_position.y -= 48.0 * delta
 		3:
-			global_position.y = player_4.global_position.y if player_4.global_position.y <= 0.0 else 0.0
+			global_position.y = player_4.global_position.y
+			
+			if finish.global_position.y - player_3.global_position.y < 32.0: player_3.global_position.y -= 48.0 * delta
 		4:
-			global_position.y = player_5.global_position.y if player_5.global_position.y <= 0.0 else 0.0
+			global_position.y = player_5.global_position.y
+			
+			if finish.global_position.y - player_4.global_position.y < 32.0: player_4.global_position.y -= 48.0 * delta
+		5:
+			if finish.global_position.y - player_5.global_position.y < 32.0: player_5.global_position.y -= 48.0 * delta
 
 
 func _on_finish_player_entered():

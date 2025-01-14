@@ -1,0 +1,219 @@
+[gd_scene load_steps=8 format=3 uid="uid://dnnqr6y0ij1vg"]
+
+[ext_resource type="Script" path="res://Script/finish.gd" id="1_46lbd"]
+[ext_resource type="Texture2D" uid="uid://d1ucwbqbuo5nb" path="res://Asset/Sprite/finish_gate.png" id="2_qhwk1"]
+[ext_resource type="Texture2D" uid="uid://cjmt1x16mct1r" path="res://Asset/Sprite/finish.png" id="2_v7ogu"]
+[ext_resource type="Texture2D" uid="uid://qn5f3nbhpkkw" path="res://Asset/Sprite/finish_light.png" id="4_ovyv6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rlvtc"]
+size = Vector2(32, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pyevt"]
+size = Vector2(48, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_agahh"]
+size = Vector2(30, 8)
+
+[node name="Finish" type="Node2D"]
+z_index = 1
+script = ExtResource("1_46lbd")
+
+[node name="Finish1" type="Area2D" parent="."]
+position = Vector2(-160, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Finish1"]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_rlvtc")
+
+[node name="Gate1" type="Node2D" parent="."]
+position = Vector2(-160, 0)
+
+[node name="GateLeft" type="Sprite2D" parent="Gate1"]
+position = Vector2(-36, 0)
+texture = ExtResource("2_qhwk1")
+region_enabled = true
+region_rect = Rect2(0, 0, 24, 16)
+
+[node name="GateRight" type="Sprite2D" parent="Gate1"]
+position = Vector2(36, 0)
+texture = ExtResource("2_qhwk1")
+region_enabled = true
+region_rect = Rect2(24, 0, 24, 16)
+
+[node name="Gate1SaticBody" type="StaticBody2D" parent="Gate1"]
+process_mode = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gate1/Gate1SaticBody"]
+shape = SubResource("RectangleShape2D_pyevt")
+
+[node name="Finish2" type="Area2D" parent="."]
+position = Vector2(-80, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Finish2"]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_rlvtc")
+
+[node name="Gate2" type="Node2D" parent="."]
+position = Vector2(-80, 0)
+
+[node name="GateLeft" type="Sprite2D" parent="Gate2"]
+position = Vector2(-36, 0)
+texture = ExtResource("2_qhwk1")
+region_enabled = true
+region_rect = Rect2(0, 0, 24, 16)
+
+[node name="GateRight" type="Sprite2D" parent="Gate2"]
+position = Vector2(36, 0)
+texture = ExtResource("2_qhwk1")
+region_enabled = true
+region_rect = Rect2(24, 0, 24, 16)
+
+[node name="Gate2SaticBody" type="StaticBody2D" parent="Gate2"]
+process_mode = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gate2/Gate2SaticBody"]
+shape = SubResource("RectangleShape2D_pyevt")
+
+[node name="Finish3" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Finish3"]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_rlvtc")
+
+[node name="Gate3" type="Node2D" parent="."]
+
+[node name="GateLeft" type="Sprite2D" parent="Gate3"]
+position = Vector2(-36, 0)
+texture = ExtResource("2_qhwk1")
+region_enabled = true
+region_rect = Rect2(0, 0, 24, 16)
+
+[node name="GateRight" type="Sprite2D" parent="Gate3"]
+position = Vector2(36, 0)
+texture = ExtResource("2_qhwk1")
+region_enabled = true
+region_rect = Rect2(24, 0, 24, 16)
+
+[node name="Gate3SaticBody" type="StaticBody2D" parent="Gate3"]
+process_mode = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gate3/Gate3SaticBody"]
+shape = SubResource("RectangleShape2D_pyevt")
+
+[node name="Finish4" type="Area2D" parent="."]
+position = Vector2(80, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Finish4"]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_rlvtc")
+
+[node name="Gate4" type="Node2D" parent="."]
+position = Vector2(80, 0)
+
+[node name="GateLeft" type="Sprite2D" parent="Gate4"]
+position = Vector2(-36, 0)
+texture = ExtResource("2_qhwk1")
+region_enabled = true
+region_rect = Rect2(0, 0, 24, 16)
+
+[node name="GateRight" type="Sprite2D" parent="Gate4"]
+position = Vector2(36, 0)
+texture = ExtResource("2_qhwk1")
+region_enabled = true
+region_rect = Rect2(24, 0, 24, 16)
+
+[node name="Gate4SaticBody" type="StaticBody2D" parent="Gate4"]
+process_mode = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gate4/Gate4SaticBody"]
+shape = SubResource("RectangleShape2D_pyevt")
+
+[node name="Finish5" type="Area2D" parent="."]
+position = Vector2(160, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Finish5"]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_rlvtc")
+
+[node name="Gate5" type="Node2D" parent="."]
+position = Vector2(160, 0)
+
+[node name="GateLeft" type="Sprite2D" parent="Gate5"]
+position = Vector2(-36, 0)
+texture = ExtResource("2_qhwk1")
+region_enabled = true
+region_rect = Rect2(0, 0, 24, 16)
+
+[node name="GateRight" type="Sprite2D" parent="Gate5"]
+position = Vector2(36, 0)
+texture = ExtResource("2_qhwk1")
+region_enabled = true
+region_rect = Rect2(24, 0, 24, 16)
+
+[node name="Gate5SaticBody" type="StaticBody2D" parent="Gate5"]
+process_mode = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gate5/Gate5SaticBody"]
+shape = SubResource("RectangleShape2D_pyevt")
+
+[node name="Finish" type="Sprite2D" parent="."]
+position = Vector2(0, -24)
+texture = ExtResource("2_v7ogu")
+
+[node name="FinishLight1" type="Sprite2D" parent="."]
+modulate = Color(0.6, 1, 0.392157, 1)
+position = Vector2(-160, -16)
+texture = ExtResource("4_ovyv6")
+
+[node name="FinishLight2" type="Sprite2D" parent="."]
+modulate = Color(0.600098, 1, 0.390625, 1)
+position = Vector2(-80, -16)
+texture = ExtResource("4_ovyv6")
+
+[node name="FinishLight3" type="Sprite2D" parent="."]
+modulate = Color(0.600098, 1, 0.390625, 1)
+position = Vector2(0, -16)
+texture = ExtResource("4_ovyv6")
+
+[node name="FinishLight4" type="Sprite2D" parent="."]
+modulate = Color(0.600098, 1, 0.390625, 1)
+position = Vector2(80, -16)
+texture = ExtResource("4_ovyv6")
+
+[node name="FinishLight5" type="Sprite2D" parent="."]
+modulate = Color(0.600098, 1, 0.390625, 1)
+position = Vector2(160, -16)
+texture = ExtResource("4_ovyv6")
+
+[node name="Spike" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spike"]
+position = Vector2(40, 0)
+shape = SubResource("RectangleShape2D_agahh")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Spike"]
+position = Vector2(120, 0)
+shape = SubResource("RectangleShape2D_agahh")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Spike"]
+position = Vector2(200, 0)
+shape = SubResource("RectangleShape2D_agahh")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Spike"]
+position = Vector2(-40, 0)
+shape = SubResource("RectangleShape2D_agahh")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Spike"]
+position = Vector2(-120, 0)
+shape = SubResource("RectangleShape2D_agahh")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Spike"]
+position = Vector2(-200, 0)
+shape = SubResource("RectangleShape2D_agahh")
+
+[connection signal="body_entered" from="Finish1" to="." method="_on_finish_1_body_entered"]
+[connection signal="body_entered" from="Finish2" to="." method="_on_finish_2_body_entered"]
+[connection signal="body_entered" from="Finish3" to="." method="_on_finish_3_body_entered"]
+[connection signal="body_entered" from="Finish4" to="." method="_on_finish_4_body_entered"]
+[connection signal="body_entered" from="Finish5" to="." method="_on_finish_5_body_entered"]
+[connection signal="body_entered" from="Spike" to="." method="_on_spike_body_entered"]
